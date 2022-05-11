@@ -1,12 +1,7 @@
 import React from "react";
-import { TodoCounter } from "./TodoCounter";
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import { CreateTodoButton } from "./CreateTodoButton";
+import { AppUI } from "./AppUI";
 
-//import './App.css';
-const defaultTodos=[
+/* const defaultTodos=[
 
   {text:'Cortar cebolla', completed:false, time:'7:00 AM'},
   
@@ -14,11 +9,38 @@ const defaultTodos=[
   
   {text:'Llorar con la llorona', completed:true, time:'11:00 AM'},
   {text:'Sacarte los mocos', completed:true, time:'11:00 AM'}
-];
+]; */
+function useLocalStorage (itemName, initialValue) {
+ 
+  //Usando el localStorage para el array de ToDos
+  const localStorageItem = window.localStorage.getItem(itemName);
+  let parsedItem;
+  
+  if ( !localStorageItem) {
+    window.localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem= [];
+  } else {
+    parsedItem = JSON.parse(localStorageItem)
+  }
+  
+  const [item, setItem]= React.useState(parsedItem);
+
+  //Creando la función que guarda en LocalStorage y Actualiza el estado de los Todos
+  const saveItem = (newItem) => {
+    const stringifiedTodos = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifiedTodos);
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+};
+
+
 
 function App() {
 
-  const [todos, setTodos]= React.useState(defaultTodos);
+
+  const [todos, saveTodos]= useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue]= React.useState('');
 
   const totalTodos = todos.length;
@@ -39,60 +61,40 @@ function App() {
     })
   }
 
+
+
   //Creando la función que cambia la propiedad Completed
   // al escuchar un click en el ícono
   const isDoneTodo = (text)=>{
     const indexTodo = todos.findIndex(todo => todo.text===text); //encontramos el índice que tiene el mismo texto que el recibido
     let newTodos=[...todos];//un clon del array 
     //inicial para q React pueda hacer re-Render
-    newTodos[indexTodo].completed=true;
-    setTodos(newTodos);
+    newTodos[indexTodo].completed=!newTodos[indexTodo].completed;
+    saveTodos(newTodos);
   };
 
     //Creando la función que elimina el todo
-  const isDelited = (text)=>{
+  const isDeleted = (text)=>{
     const indexTodo = todos.findIndex(todo => todo.text===text); //encontramos el índice que tiene el mismo texto que el recibido
     let newTodos=[...todos];//un clon del array 
     //inicial para q React pueda hacer re-Render
     newTodos.splice(indexTodo,1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }
 
 
   return (
 
-   <React.Fragment>
-
-      <TodoCounter 
-        total={totalTodos}
-        completed={completedTodos}
-      />   
-
-      <TodoSearch 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}  
-      />
-
-      <TodoList>
-
-        {filteredTodos.map(
-          todo =>(
-            <TodoItem 
-              key={todo.text} 
-              text={todo.text}
-              completed={todo.completed} 
-              time={todo.time}
-              onComplete={() => isDoneTodo(todo.text)}
-              onDelete={() => isDelited(todo.text)}
-              />
-              ))
-        }
-      
-      </TodoList>
-
-      <CreateTodoButton />  
-
-   </React.Fragment>
+    <AppUI 
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      filteredTodos={filteredTodos}
+      isDoneTodo={isDoneTodo}
+      isDeleted={isDeleted}
+    />
+   
   );
 }
 

@@ -1,0 +1,75 @@
+.TodoItem {
+    
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+
+/*     box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+ */  }
+
+ .task {
+  margin-left: 24px;
+  width: calc(100% - 100px);
+  display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  background-color: var(--color-secondary);
+  border-radius: 1em;
+ }
+  
+  .task__name {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: bold;
+  }
+
+  .task__end {
+    display: flex;
+      justify-content: flex-end;
+  }
+
+  .task__time {
+    display: inline;
+    margin-left: 16px;
+    white-space: nowrap;
+  }
+  .task--complete p {
+    text-decoration: line-through var(--color-extra) solid 2px;
+  }
+
+  .task--complete {
+    color: var(--color-dark);
+    background-color: rgb(184, 184, 184);
+  }
+  
+  .Icon {
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    width: 48px;
+    font-size: 24px;
+    font-weight: bold;
+    /* background-color: #CCC; */
+  }
+  
+  .Icon-check {
+    position: absolute;
+    left: 12px;
+  }
+  .Icon-check--active {
+    color: #4caf50;
+  }
+  
+  .Icon-delete {
+    margin-right: auto;
+
+  }
+  .Icon-delete:hover {
+    color: var(--color-extra);
+  }
