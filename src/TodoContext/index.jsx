@@ -13,7 +13,9 @@ function TodoProvider(props) {
       }= useLocalStorage('TODOS_V1', []);
     
       const [searchValue, setSearchValue]= React.useState('');
-    
+      const [openModal, setOpenModal] = React.useState(false);
+
+
       const totalTodos = todos.length;
       const completedTodos = todos.filter(todo => !!todo.completed).length;
       // doble negación es como  hacer una comparación de si nuestros items son true 
@@ -52,6 +54,16 @@ function TodoProvider(props) {
         newTodos.splice(indexTodo,1);
         saveTodos(newTodos);
       }
+
+        //Creando la función que añade el To-Do
+      const addTodo = (newText) => {
+        let newTodos=[...todos];
+        newTodos.push({
+          completed: false,
+          text:newText,
+        })
+        saveTodos(newTodos);
+      };
     
     return (
         <TodoContext.Provider value={{
@@ -64,6 +76,9 @@ function TodoProvider(props) {
             filteredTodos,
             isDoneTodo,
             isDeleted,
+            addTodo,
+            openModal,
+            setOpenModal
         }}>
             {props.children}
         </TodoContext.Provider>
