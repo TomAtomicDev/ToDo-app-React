@@ -35,7 +35,7 @@ function TodoForm(){
                 rows="10"
                 value={newTodoText} 
                 onChange={onChangeFunc}
-                placeholder='Practice public speaking with TED Talks...'/>
+                placeholder='Prepare the dinner...'/>
 
             <div className='TodoForm-buttonContainer'>
                 <button

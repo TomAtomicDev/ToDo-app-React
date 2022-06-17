@@ -1,0 +1,36 @@
+.footer {
+    margin-top: 20px;
+    padding: 6px 12px 0;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 80px;
+    width: 80vw;
+    max-width: 360px;
+    border: 2px solid var(--color-hidden);
+    border-radius: 28px 28px 0 0;
+    background: var(--color-secondary);
+    transition: 0.8s;
+}
+
+.footer__loading {
+    opacity: 0%;
+}
+
+.personalBrand {
+    margin: 5px auto 0;
+}
+
+.footer-icons-container {
+    margin: 0 auto;
+    display: flex;
+        justify-content: space-around;
+}
+
+.footer-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background-color: var(--color-hidden);
+}

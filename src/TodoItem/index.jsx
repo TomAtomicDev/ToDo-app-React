@@ -5,12 +5,12 @@ function TodoItem(props) {
 
 
     return (
-      <li className="TodoItem">
+      <li className={`TodoItem ${props.completed?'complete':''}`}>
         <span 
           className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`}
           onClick={props.onComplete}
         >
-          √
+          √ {/* <FontAwesomeIcon icon="fa-light fa-circle" /> */}
         </span>
         <div className={`task ${props.completed?'task--complete':''}`}>
           <p className={`task__name `}>

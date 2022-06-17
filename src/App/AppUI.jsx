@@ -6,7 +6,12 @@ import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { TodoForm } from '../TodoForm'
 import { CreateTodoButton } from '../CreateTodoButton';
-import { Modal } from '../Modal'
+import { Modal } from '../Modal';
+import './App.css';
+import { TodosError } from '../TodosError';
+import { TodosLoading } from '../TodosLoading';
+import { TodosEmpty } from '../TodosEmpty';
+import { Footer } from '../Footer';
 
 
 function AppUI() {
@@ -16,43 +21,53 @@ function AppUI() {
   return (
     <React.Fragment>
 
-    <TodoCounter/>   
+      <TodoCounter/>   
 
-    <TodoSearch />
+      <TodoSearch />
 
-    <TodoList>
-      {/* Implementando los estados de carga */}
-      {value.error && <p>Oh no! Algo no sucedió como esperado</p> }
-      {value.loading &&  
-        <p>Estamos cargando, aguarda un poco...</p> }
-      { (!value.loading && !value.filteredTodos.length) &&  <p>Crea tu primer To-Do!</p> }
+      <TodoList>
+        {/* Implementando los estados de carga */}
+        {value.error && <TodosError error={value.error} /> }
 
+        {value.loading && <TodosLoading/> }
 
-      {/* Para mostrar los To-Dos del array filteredTodos */}
-      {value.filteredTodos.map(
-        todo =>(
-          <TodoItem 
-            key={todo.text} 
-            text={todo.text}
-            completed={todo.completed} 
-            time={todo.time}
-            onComplete={() => value.isDoneTodo(todo.text)}
-            onDelete={() => value.isDeleted(todo.text)}
-            />
-            ))
-      }
-    </TodoList>
+        { (!value.loading && !value.totalTodos) &&  <TodosEmpty /> }
 
-    {!!value.openModal && (
-          <Modal>
-            <TodoForm />
-          </Modal>
-    )}
+        { (!value.filteredTodos.length && Boolean(value.totalTodos)) &&  
+        <p className="altMessage">
+          No se encontró: <span>'{value.searchValue}'</span>
+        </p> }
 
 
-    <CreateTodoButton/>  
+        {/* Para mostrar los To-Dos del array filteredTodos */}
+        {value.filteredTodos.map(
+          todo =>(
+            <TodoItem 
+              key={todo.text} 
+              text={todo.text}
+              completed={todo.completed} 
+              time={todo.time}
+              onComplete={() => value.isDoneTodo(todo.text)}
+              onDelete={() => value.isDeleted(todo.text)}
+              />
+              )) /* &&
+        <p>No se encontró <span>{value.searchValue}</span></p> */
 
- </React.Fragment>
+        }
+      </TodoList>
+
+      {!!value.openModal && (
+            <Modal>
+              <TodoForm />
+            </Modal>
+      )}
+
+
+      <CreateTodoButton/>
+
+      <Footer />
+
+    </React.Fragment>
   );
 }
 

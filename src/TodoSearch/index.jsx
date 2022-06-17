@@ -4,7 +4,7 @@ import './TodoSearch.css';
 
 function TodoSearch(){
 
-    const {searchValue, setSearchValue} = React.useContext(TodoContext);
+    const {searchValue, setSearchValue, loading} = React.useContext(TodoContext);
 
     const onSearchValueChange =(event)=>{
         console.log(event.target.value);
@@ -12,10 +12,10 @@ function TodoSearch(){
     };
 
     return(
-        <div className="TodoSearch">
+        <div className={`TodoSearch ${loading && "TodoSearch__loading"}`}>
             <input 
                 type="text" 
-                className="TodoSearch__input" 
+                className={`TodoSearch__input ${loading && "TodoSearch__input__loading"}`}
                 placeholder="Search task..." 
                 onChange={onSearchValueChange}
                 value={searchValue}
