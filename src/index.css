@@ -51,13 +51,4 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-#root {
-  margin: 20px auto;
-  /* position: relative; */
-  min-height: 83vh;
-  width: 90vw;
-  max-width: 450px;
-  border: 2px solid var(--color-hidden);
-  border-radius:28px; 
-  background: var(--color-secondary);
-}
+

@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# My Tasks | To-Do app 
+#### by TomAtomic.dev
+***
+This is a minimalistic To-Do app build using React.js, to write down the list of To-Dos you have pending. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In this app you can:
+- Create a new task using the '+' button
+- Mark tasks as completed
+- Delete a task if required
+- Check how many tasks you have completed from the total number of tasks.
+- Search tasks by any word or letter contained in the task, even if it is marked as complete.
+- This app is responsive, so you can use it on different devices like phones, tablets, small and large computers. 
 
-## Available Scripts
+**Important:** The list of tasks will be stored on the cache memory of your computer, no server or DataBase has been used. I will still be there even if you turn off your computer, but if you erase the navigation data of your browser it will be deleted.
 
-In the project directory, you can run:
+## How did I build the App?
+***
+This is a project for my personal portafolio that aims to demostrate habilities and expertice using the React.js framework. The main structure has been built thanks to the guide provided on the **Platzi course: Introduction to React.js**. Here you can check [My platzi certificates](https://platzi.com/p/TomAtomic/) in Web Development and other interesting subjects.
 
-### `npm start`
+In this project I used:
+- React: v.18.0.0
+- Create React App
+- React Components
+- Render Props
+- High Order Components
+- ReactDOM and Reactivity
+- Lists and Keys, Forms
+- React Hooks: useEffect, useState, useContext
+- Customs React Hooks: useLocalStorage
+- Loading Skeletons (to simulate conection to a server)
+- React-icons library
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+If you have any comments please let me know on my Twitter [@TomAtomicDev](https://twitter.com/TomAtomicDev).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

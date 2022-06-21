@@ -1,8 +1,14 @@
 import React from 'react';
+import { FaClipboardList } from 'react-icons/fa';
+import './TodosEmpty.css';
 
 function TodosEmpty () {
   return (
-    <p className="altMessage">Add your first To-Do!</p>
+    <div className="TodosEmpty">
+      <FaClipboardList className='board-icon' />
+      <p className="altMessage--empty">Add your first To-Do!</p>
+    </div>
+    
   )
 };
 

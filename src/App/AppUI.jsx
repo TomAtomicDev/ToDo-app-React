@@ -21,49 +21,51 @@ function AppUI() {
   return (
     <React.Fragment>
 
-      <TodoCounter/>   
+      <div className="myTasksApp">
 
-      <TodoSearch />
+        <TodoCounter/>   
 
-      <TodoList>
-        {/* Implementando los estados de carga */}
-        {value.error && <TodosError error={value.error} /> }
+        <TodoSearch />
 
-        {value.loading && <TodosLoading/> }
+        <TodoList>
+          {/* Implementando los estados de carga */}
+          {value.error && <TodosError error={value.error} /> }
 
-        { (!value.loading && !value.totalTodos) &&  <TodosEmpty /> }
+          {value.loading && <TodosLoading/> }
 
-        { (!value.filteredTodos.length && Boolean(value.totalTodos)) &&  
-        <p className="altMessage">
-          No se encontró: <span>'{value.searchValue}'</span>
-        </p> }
+          { (!value.loading && !value.totalTodos) &&  <TodosEmpty /> }
 
-
-        {/* Para mostrar los To-Dos del array filteredTodos */}
-        {value.filteredTodos.map(
-          todo =>(
-            <TodoItem 
-              key={todo.text} 
-              text={todo.text}
-              completed={todo.completed} 
-              time={todo.time}
-              onComplete={() => value.isDoneTodo(todo.text)}
-              onDelete={() => value.isDeleted(todo.text)}
-              />
-              )) /* &&
-        <p>No se encontró <span>{value.searchValue}</span></p> */
-
-        }
-      </TodoList>
-
-      {!!value.openModal && (
-            <Modal>
-              <TodoForm />
-            </Modal>
-      )}
+          { (!value.filteredTodos.length && Boolean(value.totalTodos)) &&  
+          <p className="altMessage">
+            No se encontró: <span>'{value.searchValue}'</span>
+          </p> }
 
 
-      <CreateTodoButton/>
+          {/* Para mostrar los To-Dos del array filteredTodos */}
+          {value.filteredTodos.map(
+            todo =>(
+              <TodoItem 
+                key={todo.text} 
+                text={todo.text}
+                completed={todo.completed} 
+                onComplete={() => value.isDoneTodo(todo.text)}
+                onDelete={() => value.isDeleted(todo.text)}
+                />
+                )) /* &&
+          <p>No se encontró <span>{value.searchValue}</span></p> */
+
+          }
+        </TodoList>
+
+        {!!value.openModal && (
+              <Modal>
+                <TodoForm />
+              </Modal>
+        )}
+
+
+        <CreateTodoButton/>
+      </div>
 
       <Footer />
 
