@@ -32,7 +32,7 @@ function useLocalStorage (itemName, initialValue) {
           setError(e);
       }
       }, 3000)
-    }, [])
+    }, [itemName, initialValue])
      
   
     //Creando la función que guarda en LocalStorage y Actualiza el estado de los Todos

@@ -6,26 +6,27 @@ function CreateTodoButton(props){
 
     const {setOpenModal} = React.useContext(TodoContext);
 
-    const plusKeyPressed = (event) => {
-        event.stopPropagation();
-        if (event.key === '+'){
-            setOpenModal(true);            
-        };
 
-    }
 
     const clickOnAddButton = ()=>{
         setOpenModal(prevState => !prevState);
     };
 
     React.useEffect(()=>{
+        const plusKeyPressed = (eve) => {
+            eve.stopPropagation();
+            if (eve.key === '+'){
+                setOpenModal(true);            
+            };
+        }
         return document.addEventListener('keydown',plusKeyPressed);
-    }, [])
+    }, [setOpenModal]) 
 
     return (
         <button 
             className="CreateTodoButton"
             onClick={clickOnAddButton}
+            
         >
                 +
         </button>
