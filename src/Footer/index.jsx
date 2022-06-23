@@ -11,22 +11,26 @@ import './Footer.css';
 function Footer () {
     const {loading}= React.useContext(TodoContext);
     return (
-        <footer className={`footer ${loading && "footer__loading"}`}>
-            <div className="footer-icons-container">
-                <a className="link--platzi" href="https://platzi.com/p/TomAtomic/" target="_blank">
-                <SiPlatzi className="footer-icon" />
+        <div>
+            <footer className={`footer ${loading && "footer__loading"}`}>
+                <div className="footer-icons-container">
+                    <a className="link--platzi" href="https://platzi.com/p/TomAtomic/" target="_blank" rel="noreferrer">
+                    <SiPlatzi className="footer-icon" />
+                    </a>
+                    <a className="link--github" href="https://github.com/TomAtomicDev" target="_blank" rel="noreferrer">
+                    <BsGithub className="footer-icon" />
+                    </a>
+                    <a className="link--linkedin" href="https://www.linkedin.com/in/tompenaloza/" target="_blank" rel="noreferrer">
+                    <SiLinkedin className="footer-icon" />
+                    </a>
+                </div>
+                <a className="personalBrand" href="https://www.tomatomic.dev" target="_blank" rel="noreferrer">
+                    <img src={byTomAtomicDev} alt="by TomAtomic.dev" />
                 </a>
-                <a className="link--github" href="https://github.com/TomAtomicDev" target="_blank">
-                <BsGithub className="footer-icon" />
-                </a>
-                <a className="link--linkedin" href="https://www.linkedin.com/in/tompenaloza/" target="_blank">
-                <SiLinkedin className="footer-icon" />
-                </a>
-            </div>
-            <div className="personalBrand">
-                <img src={byTomAtomicDev} alt="by TomAtomic.dev" />
-            </div>
-        </footer>
+            </footer>
+
+    </div>
+
     )
 };
 

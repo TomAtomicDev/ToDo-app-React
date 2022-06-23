@@ -4,8 +4,6 @@
     height: 100px;
     width: 80vw;
     max-width: 360px;
-/*     border: 2px solid var(--color-hidden);
-    border-radius: 28px 28px 0 0; */
     overflow: hidden;
     transition: 0.8s;
 }
@@ -28,4 +26,8 @@
     width: 3rem;
     height: 3rem;
     color: var(--color-contrast);
+}
+
+.footer-icon:hover {
+    color: var(--color-variation);
 }

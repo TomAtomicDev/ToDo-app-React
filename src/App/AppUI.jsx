@@ -7,11 +7,13 @@ import { TodoItem } from '../TodoItem';
 import { TodoForm } from '../TodoForm'
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
-import './App.css';
 import { TodosError } from '../TodosError';
 import { TodosLoading } from '../TodosLoading';
 import { TodosEmpty } from '../TodosEmpty';
 import { Footer } from '../Footer';
+import welcomeLeft from '../Assets/welcome-left.png';
+import welcomeRight from '../Assets/welcome-right.png';
+import './App.css';
 
 
 function AppUI() {
@@ -20,8 +22,16 @@ function AppUI() {
 
   return (
     <React.Fragment>
-
-      <div className="myTasksApp">
+    <div className="myTaskApp">
+      
+      {!value.loading && 
+      <img 
+        src={welcomeLeft} 
+        alt="A man with a computer" 
+        className="welcome-left" />
+      }
+      
+      <div className="myTasksApp-center">
 
         <TodoCounter/>   
 
@@ -51,9 +61,7 @@ function AppUI() {
                 onComplete={() => value.isDoneTodo(todo.text)}
                 onDelete={() => value.isDeleted(todo.text)}
                 />
-                )) /* &&
-          <p>No se encontró <span>{value.searchValue}</span></p> */
-
+                )) 
           }
         </TodoList>
 
@@ -66,6 +74,14 @@ function AppUI() {
 
         <CreateTodoButton/>
       </div>
+      {!value.loading && 
+        <img 
+          src={welcomeRight} 
+          alt="A woman with a computer" 
+          className="welcome-right" />
+      }
+
+    </div>
 
       <Footer />
 

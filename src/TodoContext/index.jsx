@@ -58,11 +58,19 @@ function TodoProvider(props) {
         //Creando la función que añade el To-Do
       const addTodo = (newText) => {
         let newTodos=[...todos];
-        newTodos.push({
-          completed: false,
-          text:newText,
-        })
-        saveTodos(newTodos);
+
+        //Comprobando que el texto recibido realmente sea nuevo
+        const alreadyExists = newTodos.some(previousItem => {
+          return previousItem.text===newText;
+        });
+        if (!alreadyExists) {        
+          newTodos.push({
+            completed: false,
+            text:newText,
+          });
+          saveTodos(newTodos);
+        };
+
       };
     
     return (

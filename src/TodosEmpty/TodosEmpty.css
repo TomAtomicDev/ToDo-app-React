@@ -16,3 +16,12 @@
     margin: 20px 0;
     color: var(--color-hidden);
 }
+
+.altMessage--special {
+    padding: 0 10px;
+    margin-left:40px;
+    list-style: square;
+	font-size: 1.8rem;
+    font-weight: 600;
+	color: var(--color-variation);
+}

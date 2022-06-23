@@ -1,6 +1,26 @@
-.myTasksApp {
-	margin: 20px auto;
-	/* position: relative; */
+.myTaskApp {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin:0 auto;
+}
+.welcome-left {
+	display:none;
+	margin:0 ;
+	width: 20%;
+	max-height: 430px;
+	margin-right: 10px;
+}
+ .welcome-right {
+	display:none;
+	margin: 3rem;
+	width:15%;
+	max-height: 500px;
+	
+}
+
+.myTasksApp-center {
+	margin: 20px 20px;
 	min-height: 80vh;
 	width: 90vw;
 	max-width: 450px;
@@ -34,23 +54,27 @@
 	font-weight: 600;
 }
 
-@media screen and (min-width:400px) {
-.appTitle {
-	font-size:4.4rem;
-}
-.appTitle img {
-	height: 3.4rem;
-}
-.TodoCounter {
-	font-size: 2.2rem;
-}
-.TodoItem {
-	font-size: 1.8rem;
-}
-.Icon-check {
-	margin-left: 1em;
-	margin-right: 0.32em;
-  }
+@media screen and (min-width:425px) {
+	.appTitle {
+		font-size:4.4rem;
+	}
+	.appTitle img {
+		height: 3.4rem;
+	}
+	.TodoCounter {
+		font-size: 2.2rem;
+	}
+	.TodoItem {
+		font-size: 1.8rem;
+	}
+	.Icon-check {
+		margin-left: 1em;
+		margin-right: 0.32em;
+	}
+	.LoadingIcon {
+		margin-left: 29px;
+		margin-right: 12.7px;
+	}
 }
   
 @media screen and (min-width:480px) {
@@ -64,5 +88,16 @@
 		position: fixed;
 		bottom: 24px;
 		right: 24px;
+	}
+}
+
+@media screen and (min-width: 770px) {
+	.myTaskApp-center {
+		min-width:446px;
+	}
+	.welcome-left, .welcome-right {
+		display: block;
+		transition: 0.8s;
+		object-fit:contain;
 	}
 }

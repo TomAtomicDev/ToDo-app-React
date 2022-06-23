@@ -12,7 +12,9 @@ function TodoForm(){
         }= React.useContext(TodoContext);
 
     const onChangeFunc = (event) => {
+        if (event.target.value!=='+'){
         setNewTodoText(event.target.value)
+        }
     };
 
     const onCancel = () => {
@@ -21,21 +23,33 @@ function TodoForm(){
 
     const onSubmit = (event) => {
         event.preventDefault();
-        addTodo(newTodoText);
+        if (newTodoText) {
+            addTodo(newTodoText)
+        };
         setOpenModal(false);
     };
+
+    const enterKeyHandler = (event) => {
+        event.stopPropagation();
+        if (event.key === "Enter") {
+            onSubmit(event);
+        }
+    }
 
     return (
         <form onSubmit={onSubmit}>
             <label htmlFor="newTask">Write down your new task</label>
-            <textarea 
+            <textarea
+                autoFocus 
                 name=""     
                 id="newTask" 
                 cols="30" 
                 rows="10"
-                value={newTodoText} 
+                value={newTodoText}            
+                placeholder="Press 'Enter' to add your task"
                 onChange={onChangeFunc}
-                placeholder='Prepare the dinner...'/>
+                onKeyDown={enterKeyHandler}
+            />
 
             <div className='TodoForm-buttonContainer'>
                 <button
