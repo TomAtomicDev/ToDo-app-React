@@ -1,5 +1,4 @@
 import React from 'react';
-import { TodoContext } from '../TodoContext';
 import { SiPlatzi } from 'react-icons/si';
 import { BsGithub } from 'react-icons/bs';
 import { SiLinkedin } from 'react-icons/si';
@@ -8,8 +7,8 @@ import { SiLinkedin } from 'react-icons/si';
 import byTomAtomicDev from '../Assets/byTomAtomicDev--light.JPG';
 import './Footer.css';
 
-function Footer () {
-    const {loading}= React.useContext(TodoContext);
+function Footer ({loading}) {
+
     return (
         <div>
             <footer className={`footer ${loading && "footer__loading"}`}>

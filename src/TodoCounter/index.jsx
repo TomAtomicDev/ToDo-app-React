@@ -1,13 +1,10 @@
 import React from "react";
-import { TodoContext } from '../TodoContext';
 import pencil  from '../Assets/android-chrome-192x192.png'
 import './TodoCounter.css';
 
 
 
-function TodoCounter(){
-
-    const {totalTodos, completedTodos, loading} = React.useContext(TodoContext); 
+function TodoCounter({totalTodos, completedTodos, loading}){ 
 
     return (
         <header>

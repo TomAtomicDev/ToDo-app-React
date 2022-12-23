@@ -1,15 +1,13 @@
 import React from 'react';
-import { TodoContext } from '../TodoContext';
+
 import './TodoForm.css';
 
-function TodoForm(){
+function TodoForm({
+    addTodo,
+    setOpenModal
+    }){
 
     const [newTodoText, setNewTodoText] = React.useState('');
-
-    const {
-        addTodo,
-        setOpenModal
-        }= React.useContext(TodoContext);
 
     const onChangeFunc = (event) => {
         if (event.target.value!=='+'){

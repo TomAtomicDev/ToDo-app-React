@@ -1,6 +1,7 @@
 import React from 'react';
+import { TodoHeader } from '../TodoHeader';
 import { TodoCounter } from '../TodoCounter';
-import { TodoContext } from '../TodoContext';
+import { TodoContext } from './useTodos';
 import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
@@ -13,12 +14,11 @@ import { TodosEmpty } from '../TodosEmpty';
 import { Footer } from '../Footer';
 import welcomeLeft from '../Assets/welcome-left.png';
 import welcomeRight from '../Assets/welcome-right.png';
-import './App.css';
-
+import './App.css'
 
 function AppUI() {
 
-  const value = React.useContext(TodoContext);
+
 
   return (
     <React.Fragment>
@@ -33,9 +33,21 @@ function AppUI() {
       
       <div className="myTasksApp-center">
 
-        <TodoCounter/>   
+        <TodoHeader>
+          <TodoCounter 
+            totalTodos={value.totalTodos}
+            completedTodos={value.completedTodos}
+            loading={value.loading}
+          />   
 
-        <TodoSearch />
+          <TodoSearch 
+            searchValue={value.searchValue}
+            setSearchValue={value.setSearchValue}
+            loading={value.loading}
+          />
+        </TodoHeader>
+
+
 
         <TodoList>
           {/* Implementando los estados de carga */}
