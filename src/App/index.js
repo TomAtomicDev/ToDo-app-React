@@ -45,22 +45,20 @@ function App() {
             />
           </TodoHeader>
 
-          <TodoList>
-            {/* Implementando los estados de carga */}
-            {value.error && <TodosError error={value.error} />}
-
-            {value.loading && <TodosLoading />}
-
-            {!value.loading && !value.totalTodos && <TodosEmpty />}
-
-            {!value.filteredTodos.length && Boolean(value.totalTodos) && (
+          <TodoList
+            error={value.error}
+            loading={value.loading}
+            filteredTodos={value.filteredTodos}
+            totalTodos={value.totalTodos}
+            onError={() => <TodosError />}
+            onLoading={() => <TodosLoading />}
+            onEmpty={() => <TodosEmpty />}
+            onNoResults={() => (
               <p className='altMessage'>
                 No se encontró: <span>'{value.searchValue}'</span>
               </p>
             )}
-
-            {/* Para mostrar los To-Dos del array filteredTodos */}
-            {value.filteredTodos.map((todo) => (
+            render={(todo) => (
               <TodoItem
                 key={todo.text}
                 text={todo.text}
@@ -68,8 +66,8 @@ function App() {
                 onComplete={() => value.isDoneTodo(todo.text)}
                 onDelete={() => value.isDeleted(todo.text)}
               />
-            ))}
-          </TodoList>
+            )}
+          />
 
           {!!value.openModal && (
             <Modal>
